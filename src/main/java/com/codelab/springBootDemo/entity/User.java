@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 @Table(name="UserInfo")
 public class User {
@@ -17,6 +19,7 @@ public class User {
 	    private String country;
 	    @Column(name="name")
 
+	    @NotBlank(message = "username can't empty!")
 	    private String name;
 
 
