@@ -2,16 +2,28 @@ package com.codelab.springBootDemo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import com.codelab.springBootDemo.service.UserService;
+import com.codelab.springBootDemo.util.ApplicationContextUtils;
 
 @SpringBootApplication
 public class SpringBootDemoApplication {
 	private static final Logger LOGGER=LoggerFactory.getLogger(SpringBootDemoApplication.class);
+	@Autowired
+	 private static ApplicationContextUtils util; 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDemoApplication.class, args);
 		 LOGGER.info("Simple log statement with inputs {}, {} and {}", 1,2,3);
+		 
+		 LOGGER.info("********************"+util.getApplicationContext().getBeanDefinitionCount());
+		 LOGGER.info("********************"+util.getApplicationContext().getApplicationName());
 	}
+	
 
 }
 /**
