@@ -19,7 +19,6 @@ public class SpringBootDemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootDemoApplication.class, args);
 		 LOGGER.info("Simple log statement with inputs {}, {} and {}", 1,2,3);
-		 
 		 LOGGER.info("********************"+util.getApplicationContext().getBeanDefinitionCount());
 		 LOGGER.info("********************"+util.getApplicationContext().getApplicationName());
 	}

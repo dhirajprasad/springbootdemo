@@ -18,7 +18,6 @@ public class User {
 	    @Column(name="country")
 	    private String country;
 	    @Column(name="name")
-
 	    @NotBlank(message = "username can't empty!")
 	    private String name;
 
