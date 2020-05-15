@@ -1,6 +1,8 @@
 package com.codelab.springBootDemo.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -12,21 +14,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.codelab.springBootDemo.SpringBootDemoApplication;
-import com.codelab.springBootDemo.entity.Post;
 import com.codelab.springBootDemo.entity.Comment;
+import com.codelab.springBootDemo.entity.Post;
 import com.codelab.springBootDemo.entity.User;
 import com.codelab.springBootDemo.service.CommentService;
 import com.codelab.springBootDemo.service.PostService;
 import com.codelab.springBootDemo.service.UserService;
 
+import javassist.NotFoundException;
+/*Representational state transfer is a software architectural style that defines a set of 
+ * constraints to be used for creating Web services.
+ * like 
+ * stateless :
+ * client server :
+ * cache : Cache constraints require that the data within a response to a request be 
+ * implicitly or explicitly labeled as cacheable or non-cacheable. If a response is cacheable, then a client cache is given the right to reuse that response data for later, equivalent requests.
+ *  Web services that conform to the REST architectural style, called RESTful Web services
+*/
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
 
@@ -41,9 +58,20 @@ public class RestController {
 	@Autowired
 	PostService postservice;
 	
-	@GetMapping("/health")
+	@GetMapping("/whoami")
+	public String whoami(@AuthenticationPrincipal(expression="name") String name) {
+		return name;
+		}
+	
+	@GetMapping("/healthCheck")
 	public String health() {
-		return "Welcome to  Example.";
+		String message ="";
+		if(message==""){
+			
+			Exception x= new NotFoundException("not found");
+		}
+		 
+		return "Welcome to  ****  Example.";
 	}
 
 	@PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
@@ -106,6 +134,7 @@ public class RestController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 		
 	}
+	
 	
 
 		

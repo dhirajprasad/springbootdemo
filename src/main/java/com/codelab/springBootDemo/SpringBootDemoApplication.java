@@ -5,13 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 
-import com.codelab.springBootDemo.service.UserService;
 import com.codelab.springBootDemo.util.ApplicationContextUtils;
 
-@SpringBootApplication
+@SpringBootApplication 
 public class SpringBootDemoApplication {
 	private static final Logger LOGGER=LoggerFactory.getLogger(SpringBootDemoApplication.class);
 	@Autowired
@@ -48,6 +45,12 @@ You can refer this page for common application properties used in Spring Boot.
 3. EasyNotesApplicationTests - Define unit and integration tests here.
 4. pom.xml - contains all the project dependencies
 
-
+Features
+Create stand-alone Spring applications
+Embed Tomcat, Jetty or Undertow directly (no need to deploy WAR files)
+Provide opinionated 'starter' dependencies to simplify your build configuration
+Automatically configure Spring and 3rd party libraries whenever possible
+Provide production-ready features such as metrics, health checks, and externalized configuration
+Absolutely no code generation and no requirement for XML configuration
  * 
  */
